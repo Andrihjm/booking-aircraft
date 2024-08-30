@@ -23,9 +23,17 @@ export const uploadFile = async (file: File) => {
       throw new Error(error.message);
     }
 
-    return fileName
+    return fileName;
   } catch (error) {
     console.log(error);
     return error;
   }
+};
+
+export const getUrlFileImage = (fileName: string) => {
+  const { data } = supabase.storage
+    .from("ImageUpload")
+    .getPublicUrl(`public/airplanes/${fileName}`);
+
+  return data.publicUrl;
 };
