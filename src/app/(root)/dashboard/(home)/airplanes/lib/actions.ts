@@ -10,7 +10,7 @@ import { revalidatePath } from "next/cache";
 export async function createAirplane(
   prevState: any,
   formData: FormData
-): Promise<ActionResult | undefined> {
+): Promise<ActionResult> {
   const value = airplaneFormSchema.safeParse({
     name: formData.get("name"),
     code: formData.get("code"),
