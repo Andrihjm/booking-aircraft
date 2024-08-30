@@ -1,11 +1,18 @@
 import FormSignin from "@/app/form/auth/form-signin";
+import { getUser } from "@/lib/auth";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Sign-in",
 };
 
-const page = () => {
+const page = async () => {
+  const { user, session } = await getUser();
+  if (session && user.role === "ADMIN") {
+    redirect("/dashboard");
+  }
+
   return (
     <>
       <header className="sm:w-full sm:max-w-sm sm:mx-auto">
