@@ -22,9 +22,9 @@ export default async function RootLayout({
     <>
       <div>
         <Navigation />
-        <div className="flex gap-5">
+        <div className="flex">
           <Sidebar />
-          {children}
+          <div className="w-full">{children}</div>
         </div>
       </div>
     </>

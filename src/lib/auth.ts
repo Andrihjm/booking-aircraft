@@ -57,7 +57,7 @@ export const getUser = cache(
         );
       }
     } catch {
-      // Next.js throws error when attempting to set cookies when rendering page
+      console.log("[GET_USER]: Failed to set session cookie");
     }
     return result;
   }
