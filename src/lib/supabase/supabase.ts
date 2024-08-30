@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
-const NEXT_PUBLIC_SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!! || "";
-const NEXT_PUBLIC_SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_KEY!! || "";
+const NEXT_PUBLIC_SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!!;
+const NEXT_PUBLIC_SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_KEY!!;
 
 const supabase = createClient(
   NEXT_PUBLIC_SUPABASE_URL,
@@ -13,7 +13,7 @@ export const uploadFile = async (file: File) => {
     const fileName = `${Date.now()}.png`;
 
     const { data, error } = await supabase.storage
-      .from("avatars")
+      .from("ImageUpload")
       .upload(`public/airplanes/${fileName}`, file, {
         cacheControl: "3600",
         upsert: false,
@@ -22,6 +22,8 @@ export const uploadFile = async (file: File) => {
     if (error) {
       throw new Error(error.message);
     }
+
+    return fileName
   } catch (error) {
     console.log(error);
     return error;

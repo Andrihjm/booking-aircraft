@@ -12,7 +12,6 @@ const initialFormData: ActionResult = {
 
 const FormSignin = () => {
   const [state, formState] = useFormState(handleSignInUser, initialFormData);
-
   console.log(state);
 
   return (
