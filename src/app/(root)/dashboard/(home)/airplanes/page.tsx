@@ -10,11 +10,11 @@ const page = async () => {
   const airplanes = await getAirplanes();
 
   return (
-    <div className="w-[95%] mx-auto">
+    <div className="container-fluid">
       <div className="flex items-center justify-between">
         <h1 className="my-5 text-2xl font-bold">Airplanes</h1>
 
-        <Link href={"/dashboard/airplanes/new"}>
+        <Link href={"/dashboard/airplanes/create"}>
           <Button>
             <Plus size={20} className="mr-2" />
             Create data
